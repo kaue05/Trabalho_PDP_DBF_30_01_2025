@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+a {
+  text-decoration: none !important;
+  transition: color 0.3s, text-decoration 0.3s !important;
+}
+
+a:hover {
+  color: #a0a0a0 !important;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s !important;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.aocentro{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding-top: 20%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+
+.titulo-principal {
+  padding: 2em 0 0 2em;
+}
+
+.texto-principal {
+  padding: 1em 0 2em 4em;
+}
+
+.botao-pgprincipal {
+  width: 15em;
+  height: 3em;
+  margin: auto auto !important;
+  background-color: black !important;
+  font-size: 2em !important;
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+  border-radius: 25px !important;
+  text-align: center !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.botao-pgprincipal:hover {
+  background-color: #0056b3 !important;
+}
+
+.img-principal {
+  width: 100%;
+}
+
+.botao-card {
+  width: 100% !important;
+}
+
+.image-abouttrip {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  margin-bottom: 2em;
+}

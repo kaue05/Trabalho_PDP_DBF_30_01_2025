@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris - Diário de Viagens</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Diário de Viagens</h1>
+        <nav>
+            <ul>
+                <li><a href="/viagens">Home</a></li>
+                <li><a href="/viagens/all">Todas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container mt-4">
+            <h2 style="margin-top: 2em; margin-bottom: 1em;"> <%= trip.title  %> </h2>
+
+            <img class="image-abouttrip" src="/images/<%=trip.image_path%>" alt="<%=trip.image_alt%>">
+
+            <p> <%= trip.description %></p>
+        </div><br><br><br><br>
+        <p>.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Diário de Viagens</p>
+    </footer>
+</body>
+</html>
