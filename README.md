@@ -14,7 +14,7 @@ Caminhos para teste:
 
 -Criar um diário sobre a viagem: localhost:3000/paginaCriarDiario
 
--Todos os diários*: localhost:3000/todosDiarios/:id
+-Sobre o diário*: localhost:3000/todosDiarios/:id
 
 -Todos os diários de uma viagem específica*: localhost:3000/diariosViagem/:id
 
