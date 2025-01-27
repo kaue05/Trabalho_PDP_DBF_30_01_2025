@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Diário</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="text-white py-3">
+        <div class="container">
+            <h1 class="text-center">Diário de Viagens</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/todasViagens">Todas as Viagens</a>
+                <a class="nav-link text-white" href="/paginaCriarViagem">Cadastrar Viagem</a>
+                <a class="nav-link text-white" href="/todosDiarios">Todos os Diarios</a>
+                <a class="nav-link text-white" href="/paginaCriarDiario">Cadastrar Diario</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-4">
+            <h2 class="mb-4">Criar Novo Diário</h2>
+            <form action="/criarDiario" method="POST">
+                <div class="form-group">
+                    <label for="dataDiario">Data do Diário:</label>
+                    <input 
+                        type="date" 
+                        id="datadiario" 
+                        name="datadiario" 
+                        class="form-control" 
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tituloDiario">Título do Diário:</label>
+                    <input 
+                        type="text" 
+                        id="titulodiario" 
+                        name="titulodiario" 
+                        class="form-control" 
+                        placeholder="Digite o título do diário" 
+                        maxlength="255" 
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricaoDiario">Descrição do Diário:</label>
+                    <textarea 
+                        id="descricaodiario" 
+                        name="descricaodiario" 
+                        class="form-control" 
+                        rows="5" 
+                        placeholder="Descreva o seu diário" 
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p>Adicionar crítica ao diário?</p>
+                    <div>
+                        <input 
+                            type="radio" 
+                            id="criticaSim" 
+                            name="adicionarCritica" 
+                            value="sim" 
+                            checked
+                            onchange="toggleCritica(true)">
+                        <label for="criticaSim">Sim</label>
+                    </div>
+                    <div>
+                        <input 
+                            type="radio" 
+                            id="criticaNao" 
+                            name="adicionarCritica" 
+                            value="nao" 
+                            onchange="toggleCritica(false)">
+                        <label for="criticaNao">Não</label>
+                    </div>
+                </div>
+    
+                <div class="form-group" id="criticaField">
+                    <label for="descricaoDiario">Crítica do Diário:</label>
+                    <textarea 
+                        id="criticadiario" 
+                        name="criticadiario" 
+                        class="form-control" 
+                        rows="5" 
+                        placeholder="Qual a sua crítica sobre a viagem?" 
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="idViagem">Selecione a Viagem:</label>
+                    <select 
+                        id="idviagem" 
+                        name="idviagem" 
+                        class="form-control" 
+                        required>
+                        <option value="" disabled selected>Escolha uma viagem</option>
+                        <% arrayViagens.forEach(viagem => { %>
+                            <option value="<%= viagem.id %>"><%= viagem.title %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3 espaco-final">Salvar Diário</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Diário de Viagens</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleCritica(enable) {
+            const criticaField = document.getElementById('criticaField');
+            const criticaInput = document.getElementById('criticadiario');
+    
+            if (enable) {
+                criticaField.style.display = 'block';
+                criticaInput.required = true;
+            } else {
+                criticaField.style.display = 'none';
+                criticaInput.required = false;
+                criticaInput.value = '';
+            }
+        }
+    
+        toggleCritica(true);
+    </script>
+</body>
+</html>

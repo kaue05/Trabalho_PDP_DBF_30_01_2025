@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Diário</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="espaco-final">
+    <header class="text-white py-3">
+        <div class="container">
+            <h1 class="text-center">Diário de Viagens</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/todasViagens">Todas as Viagens</a>
+                <a class="nav-link text-white" href="/paginaCriarViagem">Cadastrar Viagem</a>
+                <a class="nav-link text-white" href="/todosDiarios">Todos os Diarios</a>
+                <a class="nav-link text-white" href="/paginaCriarDiario">Cadastrar Diario</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container mt-4">
+            
+                <h2 style="margin-top: 2em; margin-bottom: 1em;"> <%= diario.titulodiario  %> </h2>
+            
+                <img class="image-abouttrip" src="/images/<%=diario.imagepath%>" alt="<%=diario.imagealt%>">
+            
+                <p> <%= diario.descricaodiario %></p>
+            
+                <% if (diario.criticadiario !== null && diario.criticadiario !== undefined) { %>
+                <h3>Importante destacar alguns pontos negativos:</h3>
+                <p> <%= diario.criticadiario %></p>
+            <% } %>
+
+        </div><br><br><br><br>
+        <p>.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Diário de Viagens</p>
+    </footer>
+</body>
+</html>

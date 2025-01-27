@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todas os Diarios</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="espaco-final">
+    <header class="text-white py-3">
+        <div class="container">
+            <h1 class="text-center">Diário de Viagens</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/todasViagens">Todas as Viagens</a>
+                <a class="nav-link text-white" href="/paginaCriarViagem">Cadastrar Viagem</a>
+                <a class="nav-link text-white" href="/todosDiarios">Todos os Diarios</a>
+                <a class="nav-link text-white" href="/paginaCriarDiario">Cadastrar Diario</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-4">
+            <h2 class="mb-4">Todos os Diários</h2>
+            <div class="row">
+                <% arrayDiarios.forEach(d => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= d.titulodiario %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><%= d.datadiario %></h6>
+                            <p class="card-text"><strong>Viagem:</strong> <%= d.tituloviagem %></p>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a href="/todosDiarios/<%= d.id %>" class="btn btn-primary btn-sm">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 Diário de Viagens</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

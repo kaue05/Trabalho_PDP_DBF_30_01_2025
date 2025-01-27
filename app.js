@@ -1,45 +1,19 @@
-var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var homeRouter = require('./routes/home');
-var tripsRouter = require('./routes/trips');
-var abouttripRouter = require('./routes/aboutTrip');
-
 var app = express();
+const path = require('path')
 
-// view engine setup
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+const rotaViagens = require('./routes/rotaViagens')
+const rotaDiarios = require('./routes/rotaDiario')
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/viagens', homeRouter);
-app.use('/viagens/all', tripsRouter);
-app.use('/', abouttripRouter);
-
-
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+app.use('/', rotaViagens);
+app.use('/', rotaDiarios);
 
 module.exports = app;
