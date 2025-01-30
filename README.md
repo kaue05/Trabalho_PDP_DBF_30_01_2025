@@ -32,4 +32,4 @@ Caminhos para teste:
 
 -----------------------------------------------------------
 
-*coloque o "id" desejado na barra de busca, depois de "/all/".
+*coloque o "id" desejado na barra de busca!
