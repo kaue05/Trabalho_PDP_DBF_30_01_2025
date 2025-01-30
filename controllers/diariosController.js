@@ -79,4 +79,49 @@ const paginaDiariosViagem = async function (req, res) {
     }
 };
 
-module.exports = {paginaHome, paginaCriarDiario, sobreDiario, paginaTodosDiarios, paginaDiariosViagem, criarDiario}
+const paginaEditarDiario = async function (req, res) {
+    try { 
+        const { id } = req.params;
+        console.log({id});
+        const arrayViagens = await modelViagem.retornarTodasViagens()
+
+        const diario = await modelDiario.getDiarioId(id);
+        console.log(diario);
+        res.render('paginaEditarDiario', { diario, arrayViagens });
+    } catch (error) {
+        console.error('Erro ao buscar diário:', error);
+        res.status(500).send('Erro ao buscar diário');
+    }
+};
+
+const atualizarDiario = async function (req, res) {
+    try {
+        const { id } = req.params;
+
+        const { datadiario, titulodiario, descricaodiario, criticadiario, idviagem } = req.body;
+
+        if (criticadiario && criticadiario.trim() !== '') {
+            await modelDiario.atualizarDiario(id, datadiario, titulodiario, descricaodiario, criticadiario, idviagem);
+        } else {
+            await modelDiario.atualizarDiario(id, datadiario, titulodiario, descricaodiario, null, idviagem);
+        }
+
+        res.redirect('/todosDiarios');
+    } catch (error) {
+        console.error('Erro ao atualizar diário:', error);
+        res.status(500).send('Erro ao atualizar diário');
+    }
+}
+
+const excluirDiario = async function (req, res) {
+    try {
+        const { id } = req.params;
+        await modelDiario.excluirDiario(id);
+        res.redirect('/todosDiarios');
+    } catch (error) {
+        console.error('Erro ao excluir diário:', error);
+        res.status(500).send('Erro ao excluir diário');
+    }
+};
+
+module.exports = {paginaHome, paginaCriarDiario, sobreDiario, paginaTodosDiarios, paginaDiariosViagem, criarDiario, paginaEditarDiario, atualizarDiario, excluirDiario}

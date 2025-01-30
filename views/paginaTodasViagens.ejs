@@ -21,25 +21,24 @@
         </div>
     </header>
     <main>
-        
         <section class="container my-4">
-            <h2 class="mb-4">Todos as Viagens</h2>
+            <h2 class="mb-4">Todas as Viagens</h2>
             <div class="row">
                 <% arrayViagens.forEach(function(trip) { %>
                     <div class="col-md-4">
                         <div class="card mb-4">
-                            <img class="card-img-top" src="/images/<%=trip.imagepath%>" alt="<%=trip.imagealt%>">
+                            <img class="card-img-top" src="/images/<%= trip.imagepath %>" alt="<%= trip.imagealt %>">
                             <div class="card-body">
                                 <h5 class="card-title"><%= trip.title %></h5>
                             </div>
-                            <div class="card-footer text-right">
+                            <div class="card-footer d-flex justify-content-between">
                                 <a href="/diariosViagem/<%= trip.id %>" class="btn btn-primary btn-sm">Ver Detalhes</a>
+                                <a href="/editarViagem/<%= trip.id %>" class="btn btn-warning btn-sm">Alterar</a>
+                                <button onclick="excluirViagem('<%= trip.id %>')" class="btn btn-danger btn-sm">Excluir</button>
                             </div>
                         </div>
                     </div>
-            
                 <% }); %>
-
             </div>
         </section>
     </main>
@@ -52,5 +51,25 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        async function excluirViagem(id) {
+        if (confirm("Tem certeza que deseja excluir esta viagem?")) {
+            try {
+                const response = await fetch(`/excluirViagem/${id}`, { method: "GET" });
+                console.log(response)
+                const data = await response.json();
+
+                if (data.success) {
+                    alert("Viagem excluída com sucesso!");
+                    window.location.reload();
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert("Erro ao excluir viagem. Tente novamente mais tarde.");
+            }
+        }
+    }
+    </script>    
 </body>
 </html>

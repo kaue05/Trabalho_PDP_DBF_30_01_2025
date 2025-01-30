@@ -22,10 +22,11 @@
     </header>
     <main>
         <div class="container mt-4">
+            <!-- Linha contendo o título e os botões -->
             <div class="d-flex justify-content-between align-items-center">
-                <h2 style="margin-top: 2em; margin-bottom: 2em;"> <%= diario.titulodiario  %> </h2>
+                <h2 style="margin-top: 2em; margin-bottom: 1em;"> <%= diario.titulodiario  %> </h2>
                 
-                <div class="my-auto">
+                <div>
                     <a href="/editarDiario/<%= diario.id %>" class="btn btn-warning btn-sm">Editar</a>
                     <a href="/excluirDiario/<%= diario.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este diário?');">Excluir</a>
                 </div>

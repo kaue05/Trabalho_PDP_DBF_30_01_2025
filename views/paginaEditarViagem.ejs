@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Viagem</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="text-white py-3">
+        <div class="container">
+            <h1 class="text-center">Diário de Viagens</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link text-white" href="/home">Home</a>
+                <a class="nav-link text-white" href="/todasViagens">Todas as Viagens</a>
+                <a class="nav-link text-white" href="/paginaCriarViagem">Cadastrar Viagem</a>
+                <a class="nav-link text-white" href="/todosDiarios">Todos os Diarios</a>
+                <a class="nav-link text-white" href="/paginaCriarDiario">Cadastrar Diario</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container mt-5">
+            <h2>Alterar Viagem</h2>
+            <form action="/alterarViagem/<%= viagem.id %>" method="POST">
+                <div class="form-group">
+                    <label for="idviagem">ID da Viagem:</label>
+                    <input 
+                        type="text" 
+                        id="idviagem" 
+                        name="idviagem" 
+                        class="form-control" 
+                        value="<%= viagem.id %>" 
+                        readonly>
+                </div>
+                <div class="form-group">
+                    <label for="title">Título da Viagem:</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        class="form-control"
+                        value="<%= viagem.title %>"
+                        placeholder="Digite o título da viagem"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="imagepath">Caminho da Imagem (URL ou nome do arquivo):</label>
+                    <input
+                        type="text"
+                        id="imagepath"
+                        name="imagepath"
+                        class="form-control"
+                        value="<%= viagem.imagepath %>"
+                        placeholder="Exemplo: paris.jpg"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="image_alt">Descrição da Imagem:</label>
+                    <input
+                        type="text"
+                        id="imagealt"
+                        name="imagealt"
+                        class="form-control"
+                        value="<%= viagem.imagealt %>"
+                        placeholder="Descrição da imagem"
+                        required>
+                </div>
+                <button type="submit" class="btn btn-primary">Alterar Viagem</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Diário de Viagens</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
